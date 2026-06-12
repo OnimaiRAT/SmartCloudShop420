@@ -3,160 +3,336 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SmartClouds</title>
+<title>SmartClouds Smoke Shop</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
+
+:root{
+    --neon:#9cff00;
+    --dark:#050505;
+    --panel:#0c0c0c;
+}
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
-    background:#050505;
+    background:#000;
     color:white;
-    min-height:100vh;
-    background-image:radial-gradient(circle at top,#111,#050505);
+    font-family:'Oswald',sans-serif;
+    background-image:
+    radial-gradient(circle at top, #111 0%, #000 70%);
 }
 
-.neon-border{
-    border:2px solid #00ffff;
+/* Neon Effect */
+.neon{
+    border:2px solid var(--neon);
     box-shadow:
-        0 0 10px #00ffff,
-        0 0 20px #00ffff,
-        0 0 40px #00ffff;
-}
-
-header{
-    text-align:center;
-    padding:40px 20px;
-    margin:20px;
-    border-radius:20px;
-}
-
-.logo{
-    max-width:280px;
-    width:100%;
-    margin-bottom:20px;
-}
-
-h1{
-    font-size:3rem;
-    color:#fff;
-    text-shadow:
-        0 0 10px #00ffff,
-        0 0 20px #00ffff,
-        0 0 40px #00ffff;
-}
-
-.tagline{
-    margin-top:10px;
-    font-size:1.2rem;
-    color:#ddd;
+    0 0 10px var(--neon),
+    0 0 20px rgba(156,255,0,.7),
+    inset 0 0 10px rgba(156,255,0,.3);
 }
 
 .container{
-    width:90%;
-    max-width:1200px;
+    width:95%;
+    max-width:1400px;
     margin:auto;
+    padding:20px;
+}
+
+/* HERO */
+
+.hero{
+    margin-top:20px;
+    border-radius:25px;
+    overflow:hidden;
+    background:#050505;
+    text-align:center;
+    padding:40px 20px;
+}
+
+.hero img{
+    width:100%;
+    max-width:900px;
+    display:block;
+    margin:auto;
+}
+
+.hero h1{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:90px;
+    color:white;
+    letter-spacing:3px;
+    text-shadow:
+    0 0 10px var(--neon),
+    0 0 30px var(--neon);
+}
+
+.hero p{
+    color:#ccc;
+    font-size:24px;
+    margin-top:10px;
+}
+
+/* PRODUCT BAR */
+
+.products{
+    margin-top:25px;
+    border-radius:20px;
+    padding:25px;
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    text-align:center;
+}
+
+.product{
+    border-right:1px solid rgba(156,255,0,.4);
+}
+
+.product:last-child{
+    border:none;
+}
+
+.product i{
+    font-size:60px;
+    color:var(--neon);
+}
+
+.product h3{
+    color:var(--neon);
+    font-size:38px;
+    margin-top:10px;
+    text-shadow:0 0 10px var(--neon);
+}
+
+/* CONTENT */
+
+.info-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
     gap:25px;
-    padding-bottom:40px;
+    margin-top:25px;
 }
 
 .card{
-    padding:25px;
-    border-radius:18px;
-    background:rgba(15,15,15,.9);
+    background:var(--panel);
+    border-radius:20px;
+    padding:30px;
 }
 
 .card h2{
-    margin-bottom:15px;
-    color:#00ffff;
+    color:var(--neon);
+    font-family:'Bebas Neue';
+    font-size:55px;
+    margin-bottom:20px;
+    text-shadow:0 0 10px var(--neon);
 }
 
-.hours-list{
+.location{
+    font-size:34px;
+    line-height:1.4;
+}
+
+.hours li{
     list-style:none;
-    line-height:2;
+    padding:12px 0;
+    border-bottom:1px solid rgba(156,255,0,.25);
+    font-size:28px;
 }
 
 .direction-btn{
     display:inline-block;
-    margin-top:15px;
-    padding:12px 24px;
+    margin-top:30px;
+    padding:15px 35px;
+    border-radius:15px;
     text-decoration:none;
-    color:#000;
-    background:#00ffff;
+    color:black;
+    background:var(--neon);
+    font-size:28px;
     font-weight:bold;
-    border-radius:10px;
-    transition:.3s;
+    box-shadow:0 0 20px var(--neon);
 }
 
-.direction-btn:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 20px #00ffff;
-}
+/* FOOTER FEATURES */
 
-footer{
+.features{
+    margin-top:25px;
+    border-radius:20px;
+    padding:30px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
     text-align:center;
-    padding:20px;
-    color:#aaa;
+    gap:15px;
 }
+
+.feature h3{
+    color:white;
+    font-size:28px;
+    margin-top:10px;
+}
+
+.feature span{
+    color:var(--neon);
+    font-size:60px;
+}
+
+.footer{
+    margin-top:25px;
+    text-align:center;
+    padding:25px;
+    border-radius:20px;
+    font-family:'Bebas Neue';
+    font-size:45px;
+}
+
+.green{
+    color:var(--neon);
+}
+
+@media(max-width:900px){
+
+.products{
+grid-template-columns:1fr 1fr;
+}
+
+.info-grid{
+grid-template-columns:1fr;
+}
+
+.features{
+grid-template-columns:1fr 1fr;
+}
+
+.hero h1{
+font-size:60px;
+}
+
+}
+
 </style>
 </head>
 <body>
 
-<header class="neon-border">
-    <!-- Replace with your actual logo -->
-    <img src="logo1.PNG" alt="SmartClouds Logo" class="logo">
-
-    <h1>SmartClouds</h1>
-
-    <p class="tagline">
-        Fast Service • Great Atmosphere • Open Late
-    </p>
-</header>
-
 <div class="container">
 
-    <div class="card neon-border">
-        <h2>Location</h2>
+    <!-- HERO -->
+
+    <section class="hero neon">
+
+        <img src="logo1.PNG" alt="SmartClouds Logo">
+
+        <h1>SMARTCLOUDS</h1>
 
         <p>
-            4712 Nolensville Pk<br>
-            Nashville, TN 37211
+            Premium Smoke Shop • THC-A • Vapes • CBD • Glass
         </p>
 
-        <a
+    </section>
+
+    <!-- PRODUCTS -->
+
+    <section class="products neon">
+
+        <div class="product">
+            <h3>THC-A</h3>
+        </div>
+
+        <div class="product">
+            <h3>GLASS PIPES</h3>
+        </div>
+
+        <div class="product">
+            <h3>VAPES</h3>
+        </div>
+
+        <div class="product">
+            <h3>CBD</h3>
+        </div>
+
+    </section>
+
+    <!-- INFO -->
+
+    <section class="info-grid">
+
+        <div class="card neon">
+
+            <h2>LOCATION</h2>
+
+            <div class="location">
+                4712 Nolensville Pike<br>
+                Nashville, TN 37211<br>
+                United States
+            </div>
+
+            <a
             class="direction-btn"
-            href="https://www.google.com/maps/search/?api=1&query=4712+Nolensville+Pk,+Nashville,+TN+37211"
-            target="_blank"
-        >
-            Get Directions
-        </a>
-    </div>
+            href="https://www.google.com/maps/search/?api=1&query=4712+Nolensville+Pike+Nashville+TN+37211"
+            target="_blank">
+            GET DIRECTIONS
+            </a>
 
-    <div class="card neon-border">
-        <h2>Hours</h2>
+        </div>
 
-        <ul class="hours-list">
-            <li>Friday — 10 AM–12 AM</li>
-            <li>Saturday — 10 AM–12 AM</li>
-            <li>Sunday — 10 AM–12 AM</li>
-            <li>Monday — 10 AM–11 PM</li>
-            <li>Tuesday — 10 AM–11 PM</li>
-            <li>Wednesday — 10 AM–11 PM</li>
-            <li>Thursday — 10 AM–12 AM</li>
-        </ul>
-    </div>
+        <div class="card neon">
+
+            <h2>HOURS</h2>
+
+            <ul class="hours">
+                <li>Friday — 10 AM–12 AM</li>
+                <li>Saturday — 10 AM–12 AM</li>
+                <li>Sunday — 10 AM–12 AM</li>
+                <li>Monday — 10 AM–11 PM</li>
+                <li>Tuesday — 10 AM–11 PM</li>
+                <li>Wednesday — 10 AM–11 PM</li>
+                <li>Thursday — 10 AM–12 AM</li>
+            </ul>
+
+        </div>
+
+    </section>
+
+    <!-- FEATURES -->
+
+    <section class="features neon">
+
+        <div class="feature">
+            <span>✓</span>
+            <h3>PREMIUM QUALITY</h3>
+        </div>
+
+        <div class="feature">
+            <span>☁</span>
+            <h3>SMOOTH EXPERIENCE</h3>
+        </div>
+
+        <div class="feature">
+            <span>👥</span>
+            <h3>GREAT VIBES</h3>
+        </div>
+
+        <div class="feature">
+            <span>🛡</span>
+            <h3>TRUSTED LOCAL SHOP</h3>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <section class="footer neon">
+        PREMIUM PRODUCTS.
+        <span class="green">GREAT PRICES.</span>
+        GOOD VIBES.
+    </section>
 
 </div>
-
-<footer>
-    © 2026 SmartClouds. All Rights Reserved.
-</footer>
 
 </body>
 </html>
