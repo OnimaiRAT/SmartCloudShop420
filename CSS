@@ -1,1 +1,80 @@
+/* REVIEWS */
 
+.reviews{
+    margin-top:25px;
+    padding:35px;
+    border-radius:20px;
+    background:#050505;
+}
+
+.reviews h2{
+    text-align:center;
+    color:#9cff00;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:60px;
+    margin-bottom:30px;
+    text-shadow:
+    0 0 10px #9cff00,
+    0 0 25px #9cff00;
+}
+
+.review-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.review-card{
+    background:#0a0a0a;
+    border:2px solid #9cff00;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:
+    0 0 15px rgba(156,255,0,.5),
+    inset 0 0 15px rgba(156,255,0,.15);
+}
+
+.review-card h3{
+    color:#fff;
+    margin:10px 0 5px;
+    font-size:22px;
+}
+
+.review-stars{
+    color:#9cff00;
+    font-size:22px;
+    text-shadow:0 0 10px #9cff00;
+}
+
+.review-time{
+    color:#aaa;
+    font-size:14px;
+}
+
+.review-card p{
+    margin-top:15px;
+    line-height:1.6;
+    color:#ddd;
+}
+
+.review-proof{
+    margin-top:40px;
+    text-align:center;
+}
+
+.review-proof h3{
+    color:#9cff00;
+    font-size:40px;
+    margin-bottom:20px;
+    text-shadow:0 0 10px #9cff00;
+}
+
+.review-proof img{
+    width:100%;
+    max-width:420px;
+    border-radius:15px;
+    border:3px solid #9cff00;
+    box-shadow:
+    0 0 15px #9cff00,
+    0 0 35px rgba(156,255,0,.5);
+}
