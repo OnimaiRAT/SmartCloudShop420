@@ -1,1 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartClouds</title>
 
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#050505;
+    color:white;
+    min-height:100vh;
+    background-image:radial-gradient(circle at top,#111,#050505);
+}
+
+.neon-border{
+    border:2px solid #00ffff;
+    box-shadow:
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 40px #00ffff;
+}
+
+header{
+    text-align:center;
+    padding:40px 20px;
+    margin:20px;
+    border-radius:20px;
+}
+
+.logo{
+    max-width:280px;
+    width:100%;
+    margin-bottom:20px;
+}
+
+h1{
+    font-size:3rem;
+    color:#fff;
+    text-shadow:
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 40px #00ffff;
+}
+
+.tagline{
+    margin-top:10px;
+    font-size:1.2rem;
+    color:#ddd;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+    padding-bottom:40px;
+}
+
+.card{
+    padding:25px;
+    border-radius:18px;
+    background:rgba(15,15,15,.9);
+}
+
+.card h2{
+    margin-bottom:15px;
+    color:#00ffff;
+}
+
+.hours-list{
+    list-style:none;
+    line-height:2;
+}
+
+.direction-btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:12px 24px;
+    text-decoration:none;
+    color:#000;
+    background:#00ffff;
+    font-weight:bold;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.direction-btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px #00ffff;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    color:#aaa;
+}
+</style>
+</head>
+<body>
+
+<header class="neon-border">
+    <!-- Replace with your actual logo -->
+    <img src="logo1.PNG" alt="SmartClouds Logo" class="logo">
+
+    <h1>SmartClouds</h1>
+
+    <p class="tagline">
+        Fast Service • Great Atmosphere • Open Late
+    </p>
+</header>
+
+<div class="container">
+
+    <div class="card neon-border">
+        <h2>Location</h2>
+
+        <p>
+            4712 Nolensville Pk<br>
+            Nashville, TN 37211
+        </p>
+
+        <a
+            class="direction-btn"
+            href="https://www.google.com/maps/search/?api=1&query=4712+Nolensville+Pk,+Nashville,+TN+37211"
+            target="_blank"
+        >
+            Get Directions
+        </a>
+    </div>
+
+    <div class="card neon-border">
+        <h2>Hours</h2>
+
+        <ul class="hours-list">
+            <li>Friday — 10 AM–12 AM</li>
+            <li>Saturday — 10 AM–12 AM</li>
+            <li>Sunday — 10 AM–12 AM</li>
+            <li>Monday — 10 AM–11 PM</li>
+            <li>Tuesday — 10 AM–11 PM</li>
+            <li>Wednesday — 10 AM–11 PM</li>
+            <li>Thursday — 10 AM–12 AM</li>
+        </ul>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 SmartClouds. All Rights Reserved.
+</footer>
+
+</body>
+</html>
