@@ -7,226 +7,345 @@
 
 <style>
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
 body{
-background:#000;
-color:white;
+    background:#000;
+    color:white;
 }
+
+/* TOP BAR */
 
 .top-bar{
-background:black;
-border-bottom:1px solid #8cff00;
-padding:15px;
-display:flex;
-justify-content:space-around;
-color:#8cff00;
-font-weight:bold;
+    background:black;
+    border-bottom:1px solid #8cff00;
+    padding:15px;
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    gap:10px;
+    color:#8cff00;
+    font-weight:bold;
 }
 
+/* NAVIGATION */
+
 nav{
-display:flex;
-justify-content:center;
-gap:50px;
-padding:20px;
-background:#111;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:40px;
+    padding:20px;
+    background:#111;
+    flex-wrap:wrap;
+}
+
+.nav-logo{
+    height:90px;
 }
 
 nav a{
-color:white;
-text-decoration:none;
-font-size:18px;
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:bold;
+    transition:.3s;
 }
 
 nav a:hover{
-color:#8cff00;
+    color:#8cff00;
 }
 
+/* HERO */
+
 .hero{
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:50px;
+    padding:60px;
+    flex-wrap:wrap;
 }
 
 .hero img{
-width:45%;
-border-radius:20px;
+    width:450px;
+    max-width:100%;
+    border-radius:20px;
+}
+
+.hero-text{
+    max-width:500px;
 }
 
 .hero-text h1{
-font-size:70px;
+    font-size:70px;
+    line-height:1;
 }
 
 .green{
-color:#8cff00;
+    color:#8cff00;
 }
 
 .hero-text p{
-margin-top:20px;
-font-size:22px;
+    margin-top:20px;
+    font-size:22px;
+    line-height:1.5;
 }
 
 .button{
-display:inline-block;
-margin-top:30px;
-padding:15px 40px;
-background:#8cff00;
-color:black;
-text-decoration:none;
-font-weight:bold;
-border-radius:8px;
+    display:inline-block;
+    margin-top:30px;
+    padding:15px 40px;
+    background:#8cff00;
+    color:black;
+    text-decoration:none;
+    font-weight:bold;
+    border-radius:8px;
+    transition:.3s;
 }
 
+.button:hover{
+    background:white;
+}
+
+/* CATEGORIES */
+
 .categories{
-padding:60px;
+    padding:60px;
 }
 
 .categories h2{
-font-size:50px;
-color:#8cff00;
-margin-bottom:30px;
+    font-size:50px;
+    color:#8cff00;
+    margin-bottom:30px;
+    text-align:center;
 }
 
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
 }
 
 .card{
-background:#111;
-border:2px solid #8cff00;
-padding:30px;
-text-align:center;
-border-radius:15px;
+    background:#111;
+    border:2px solid #8cff00;
+    padding:30px;
+    text-align:center;
+    border-radius:15px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 20px #8cff00;
 }
 
 .card h3{
-margin-bottom:15px;
+    margin-bottom:15px;
 }
 
+/* ABOUT */
+
 .about{
-padding:60px;
-display:flex;
-gap:50px;
-align-items:center;
+    padding:60px;
+    display:flex;
+    gap:50px;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
 }
 
 .about img{
-width:45%;
-border-radius:20px;
+    width:450px;
+    max-width:100%;
+    border-radius:20px;
 }
+
+.about-text{
+    max-width:500px;
+}
+
+.about-text h2{
+    font-size:50px;
+}
+
+.about-text p{
+    font-size:18px;
+    line-height:1.8;
+}
+
+/* FOOTER */
 
 footer{
-padding:40px;
-text-align:center;
-border-top:1px solid #8cff00;
-margin-top:50px;
+    padding:40px;
+    text-align:center;
+    border-top:1px solid #8cff00;
+    margin-top:50px;
 }
 
+.footer-logo{
+    width:180px;
+    margin-bottom:20px;
+}
+
+footer p{
+    margin-top:10px;
+    color:#8cff00;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .hero-text h1{
+        font-size:48px;
+        text-align:center;
+    }
+
+    .hero-text{
+        text-align:center;
+    }
+
+    .categories h2,
+    .about-text h2{
+        font-size:38px;
+        text-align:center;
+    }
+
+    .about-text{
+        text-align:center;
+    }
+
+    nav{
+        gap:20px;
+    }
+}
 </style>
 </head>
 <body>
 
+<!-- TOP BAR -->
+
 <div class="top-bar">
-<div>📍 4712 Nolensville Pike Nashville, TN 37211</div>
-<div>📞 (615) 546-3707</div>
-<div>📷 @smartclouds615</div>
+    <div>📍 4712 Nolensville Pike, Nashville, TN 37211</div>
+    <div>📞 (615) 546-3707</div>
+    <div>📷 @smartclouds615</div>
 </div>
 
+<!-- NAVIGATION -->
+
 <nav>
-<a href="#">HOME</a>
-<a href="#">SHOP</a>
-<a href="#">ABOUT</a>
-<a href="#">CONTACT</a>
+
+    <img src="logo1.png" alt="Smart Clouds Logo" class="nav-logo">
+
+    <a href="#">HOME</a>
+    <a href="#">SHOP</a>
+    <a href="#">ABOUT</a>
+    <a href="#">CONTACT</a>
+
 </nav>
+
+<!-- HERO -->
 
 <section class="hero">
 
-<div class="hero-text">
-<h1>PREMIUM SMOKE.<br><span class="green">SMART CHOICE.</span></h1>
+    <div class="hero-text">
 
-<p>
-Top quality products.<br>
-Great prices.<br>
-Local vibes.
-</p>
+        <h1>
+            PREMIUM SMOKE.<br>
+            <span class="green">SMART CHOICE.</span>
+        </h1>
 
-<a class="button" href="#">SHOP NOW</a>
-</div>
+        <p>
+            Top quality products.<br>
+            Great prices.<br>
+            Local vibes.
+        </p>
 
-<img src="store.jpg">
+        <a class="button" href="#">SHOP NOW</a>
+
+    </div>
+
+    <img src="logo2.png" alt="Smart Clouds Storefront">
 
 </section>
+
+<!-- CATEGORIES -->
 
 <section class="categories">
 
-<h2>SHOP BY CATEGORY</h2>
+    <h2>SHOP BY CATEGORY</h2>
 
-<div class="grid">
+    <div class="grid">
 
-<div class="card">
-<h3>PIPES & BONGS</h3>
-</div>
+        <div class="card">
+            <h3>PIPES & BONGS</h3>
+        </div>
 
-<div class="card">
-<h3>VAPES</h3>
-</div>
+        <div class="card">
+            <h3>VAPES</h3>
+        </div>
 
-<div class="card">
-<h3>FLOWER</h3>
-</div>
+        <div class="card">
+            <h3>FLOWER</h3>
+        </div>
 
-<div class="card">
-<h3>WRAPS & ROLLING</h3>
-</div>
+        <div class="card">
+            <h3>WRAPS & ROLLING</h3>
+        </div>
 
-<div class="card">
-<h3>CONCENTRATES</h3>
-</div>
+        <div class="card">
+            <h3>CONCENTRATES</h3>
+        </div>
 
-<div class="card">
-<h3>EDIBLES</h3>
-</div>
+        <div class="card">
+            <h3>EDIBLES</h3>
+        </div>
 
-</div>
+    </div>
+
 </section>
+
+<!-- ABOUT -->
 
 <section class="about">
 
-<div>
-<h2 class="green">ABOUT US</h2>
+    <div class="about-text">
 
-<br>
+        <h2 class="green">ABOUT US</h2>
 
-<p>
-Smart Clouds Smoke Shop is your local spot for top-quality smoke products and good vibes.
+        <br>
 
-We're all about great products, honest service, and keeping our community lifted.
-</p>
+        <p>
+            Smart Clouds Smoke Shop is your local destination for premium smoke products,
+            vapes, glass, wraps, accessories, and more.
 
-<br>
+            We're committed to quality products, great customer service,
+            and creating a welcoming environment for our community.
+        </p>
 
-<a class="button" href="#">LEARN MORE</a>
+        <a class="button" href="#">LEARN MORE</a>
 
-</div>
+    </div>
 
-<img src="building.jpg">
+    <img src="logo2.png" alt="Smart Clouds Storefront">
 
 </section>
 
+<!-- FOOTER -->
+
 <footer>
 
-<h2 class="green">FOLLOW US</h2>
+    <img src="logo1.png" alt="Smart Clouds Logo" class="footer-logo">
 
-<br>
+    <h2 class="green">FOLLOW US</h2>
 
-<p>@smartclouds615</p>
+    <p>@smartclouds615</p>
 
 </footer>
 
