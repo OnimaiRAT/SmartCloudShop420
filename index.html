@@ -5,348 +5,544 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Smart Clouds Smoke Shop</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
+
+:root{
+    --bg:#050505;
+    --card:#0c0c0f;
+    --purple:#b000ff;
+    --purple2:#7a00ff;
+    --green:#b4ff00;
+    --text:#ffffff;
+}
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,sans-serif;
 }
 
 body{
-    background:#000;
+    background:var(--bg);
     color:white;
+    font-family:Inter,sans-serif;
+    overflow-x:hidden;
 }
 
-/* TOP BAR */
+/* animated background */
 
-.top-bar{
-    background:black;
-    border-bottom:1px solid #8cff00;
-    padding:15px;
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at 20% 20%,rgba(176,0,255,.2),transparent 35%),
+    radial-gradient(circle at 80% 30%,rgba(180,255,0,.15),transparent 35%),
+    radial-gradient(circle at 50% 80%,rgba(176,0,255,.15),transparent 40%);
+    animation:moveGlow 12s linear infinite;
+    z-index:-2;
+}
+
+@keyframes moveGlow{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.15);}
+    100%{transform:scale(1);}
+}
+
+/* smoke */
+
+.smoke{
+    position:fixed;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:-1;
+}
+
+.smoke span{
+    position:absolute;
+    bottom:-200px;
+    width:350px;
+    height:350px;
+    background:radial-gradient(circle,
+    rgba(176,0,255,.2),
+    transparent 70%);
+    filter:blur(80px);
+    animation:smoke 18s infinite linear;
+}
+
+.smoke span:nth-child(2){
+    left:40%;
+    animation-duration:22s;
+}
+
+.smoke span:nth-child(3){
+    left:70%;
+    background:radial-gradient(circle,
+    rgba(180,255,0,.12),
+    transparent 70%);
+}
+
+@keyframes smoke{
+    from{
+        transform:translateY(0) scale(1);
+    }
+    to{
+        transform:translateY(-120vh) scale(1.8);
+    }
+}
+
+/* header */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    backdrop-filter:blur(20px);
+    background:rgba(0,0,0,.75);
+    border-bottom:1px solid rgba(176,0,255,.4);
+}
+
+.nav{
+    max-width:1400px;
+    margin:auto;
+    padding:20px;
     display:flex;
-    justify-content:space-around;
-    flex-wrap:wrap;
-    gap:10px;
-    color:#8cff00;
-    font-weight:bold;
+    justify-content:space-between;
+    align-items:center;
 }
 
-/* NAVIGATION */
+.logo{
+    font-family:Orbitron;
+    font-size:2rem;
+    font-weight:800;
+    color:var(--green);
+    text-shadow:0 0 15px var(--green);
+}
 
 nav{
     display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:40px;
-    padding:20px;
-    background:#111;
-    flex-wrap:wrap;
-}
-
-.nav-logo{
-    height:90px;
+    gap:35px;
 }
 
 nav a{
-    color:white;
     text-decoration:none;
-    font-size:18px;
-    font-weight:bold;
+    color:#8cff00;
     transition:.3s;
 }
 
 nav a:hover{
-    color:#8cff00;
+    color:var(--green);
 }
 
-/* HERO */
+/* hero */
 
 .hero{
-    display:flex;
+    min-height:90vh;
+    display:grid;
+    grid-template-columns:1fr 1fr;
     align-items:center;
-    justify-content:center;
-    gap:50px;
-    padding:60px;
-    flex-wrap:wrap;
-}
-
-.hero img{
-    width:450px;
-    max-width:100%;
-    border-radius:20px;
-}
-
-.hero-text{
-    max-width:500px;
+    max-width:1400px;
+    margin:auto;
+    padding:80px 30px;
+    gap:60px;
 }
 
 .hero-text h1{
-    font-size:70px;
+    font-family:Orbitron;
+    font-size:5rem;
     line-height:1;
+    margin-bottom:25px;
 }
 
-.green{
-    color:#8cff00;
+.hero-text h1 span{
+    color:var(--green);
+    text-shadow:0 0 25px var(--green);
 }
 
 .hero-text p{
-    margin-top:20px;
-    font-size:22px;
-    line-height:1.5;
-}
-
-.button{
-    display:inline-block;
-    margin-top:30px;
-    padding:15px 40px;
-    background:#8cff00;
-    color:black;
-    text-decoration:none;
-    font-weight:bold;
-    border-radius:8px;
-    transition:.3s;
-}
-
-.button:hover{
-    background:white;
-}
-
-/* CATEGORIES */
-
-.categories{
-    padding:60px;
-}
-
-.categories h2{
-    font-size:50px;
-    color:#8cff00;
+    color:#ccc;
+    font-size:1.1rem;
     margin-bottom:30px;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+}
+
+.btn{
+    padding:16px 35px;
+    border:none;
+    cursor:pointer;
+    font-weight:700;
+    border-radius:12px;
+    transition:.4s;
+}
+
+.btn-green{
+    background:var(--green);
+    color:black;
+    box-shadow:0 0 30px rgba(180,255,0,.5);
+}
+
+.btn-purple{
+    background:transparent;
+    border:2px solid var(--purple);
+    color:white;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+}
+
+.hero-card{
+    height:550px;
+    border-radius:25px;
+    position:relative;
+    overflow:hidden;
+    border:2px solid rgba(176,0,255,.5);
+    box-shadow:
+    0 0 40px rgba(176,0,255,.4),
+    inset 0 0 40px rgba(176,0,255,.15);
+}
+
+.hero-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(45deg,
+    rgba(176,0,255,.2),
+    rgba(180,255,0,.15));
+}
+
+.neon-box{
+    position:absolute;
+    inset:40px;
+    border:4px solid var(--purple);
+    box-shadow:
+    0 0 30px var(--purple),
+    0 0 60px var(--purple);
+}
+
+/* sale banner */
+
+.sale{
+    max-width:1400px;
+    margin:20px auto;
+    background:linear-gradient(90deg,#120018,#050505);
+    border:1px solid var(--purple);
+    padding:35px;
+    border-radius:20px;
     text-align:center;
+}
+
+.sale h2{
+    font-family:Orbitron;
+    font-size:3rem;
+    color:var(--green);
+}
+
+/* categories */
+
+.section{
+    max-width:1400px;
+    margin:80px auto;
+    padding:0 20px;
+}
+
+.title{
+    font-family:Orbitron;
+    text-align:center;
+    font-size:2.8rem;
+    margin-bottom:40px;
+}
+
+.title span{
+    color:var(--purple);
 }
 
 .grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
+    gap:25px;
 }
 
-.card{
-    background:#111;
-    border:2px solid #8cff00;
+.category{
+    background:var(--card);
+    border-radius:20px;
     padding:30px;
     text-align:center;
-    border-radius:15px;
-    transition:.3s;
+    border:1px solid rgba(176,0,255,.3);
+    transition:.4s;
 }
 
-.card:hover{
-    transform:translateY(-5px);
-    box-shadow:0 0 20px #8cff00;
+.category:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 35px rgba(176,0,255,.4);
 }
 
-.card h3{
-    margin-bottom:15px;
+.category h3{
+    color:var(--green);
 }
 
-/* ABOUT */
+/* products */
 
-.about{
-    padding:60px;
-    display:flex;
-    gap:50px;
-    align-items:center;
-    justify-content:center;
-    flex-wrap:wrap;
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
 }
 
-.about img{
-    width:450px;
-    max-width:100%;
+.product{
+    background:var(--card);
     border-radius:20px;
+    overflow:hidden;
+    border:1px solid rgba(176,0,255,.3);
+    transition:.4s;
 }
 
-.about-text{
-    max-width:500px;
+.product:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 40px rgba(176,0,255,.45);
 }
 
-.about-text h2{
-    font-size:50px;
+.product-image{
+    height:260px;
+    background:
+    linear-gradient(
+    135deg,
+    rgba(176,0,255,.25),
+    rgba(180,255,0,.1)
+    );
 }
 
-.about-text p{
-    font-size:18px;
-    line-height:1.8;
+.product-content{
+    padding:20px;
 }
 
-/* FOOTER */
+.price{
+    color:var(--green);
+    font-size:1.4rem;
+    font-weight:700;
+    margin:10px 0;
+}
+
+.buy{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:var(--purple);
+    color:white;
+    cursor:pointer;
+}
+
+/* newsletter */
+
+.newsletter{
+    margin-top:80px;
+    background:#090909;
+    border-top:1px solid rgba(176,0,255,.3);
+    padding:70px 20px;
+}
+
+.newsletter-inner{
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+}
+
+.newsletter input{
+    width:100%;
+    padding:18px;
+    margin-top:20px;
+    border:none;
+    border-radius:12px;
+    background:#111;
+    color:white;
+}
 
 footer{
     padding:40px;
     text-align:center;
-    border-top:1px solid #8cff00;
-    margin-top:50px;
+    color:#777;
 }
 
-.footer-logo{
-    width:180px;
-    margin-bottom:20px;
+/* mobile */
+
+@media(max-width:900px){
+
+.hero{
+    grid-template-columns:1fr;
 }
 
-footer p{
-    margin-top:10px;
-    color:#8cff00;
+.hero-text h1{
+    font-size:3rem;
 }
 
-/* MOBILE */
-
-@media(max-width:768px){
-
-    .hero-text h1{
-        font-size:48px;
-        text-align:center;
-    }
-
-    .hero-text{
-        text-align:center;
-    }
-
-    .categories h2,
-    .about-text h2{
-        font-size:38px;
-        text-align:center;
-    }
-
-    .about-text{
-        text-align:center;
-    }
-
-    nav{
-        gap:20px;
-    }
 }
+
 </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
-
-<div class="top-bar">
-    <div>📍 4712 Nolensville Pike, Nashville, TN 37211</div>
-    <div>📞 (615) 546-3707</div>
-    <div>📷 @smartclouds615</div>
+<div class="smoke">
+    <span></span>
+    <span></span>
+    <span></span>
 </div>
 
-<!-- NAVIGATION -->
+<header>
+    <div class="nav">
+        <div class="logo">NEON VAPE</div>
 
-<nav>
-
-    <img src="logo1" alt="Smart Clouds Logo" class="nav-logo">
-
-    <a href="#">HOME</a>
-    <a href="#">SHOP</a>
-    <a href="#">ABOUT</a>
-    <a href="#">CONTACT</a>
-
-</nav>
-
-<!-- HERO -->
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Shop</a>
+            <a href="#">Categories</a>
+            <a href="#">Deals</a>
+            <a href="#">Contact</a>
+        </nav>
+    </div>
+</header>
 
 <section class="hero">
 
     <div class="hero-text">
 
         <h1>
-            PREMIUM SMOKE.<br>
-            <span class="green">SMART CHOICE.</span>
+            <span>VAPES</span>
         </h1>
 
         <p>
-            Top quality products.<br>
-            Great prices.<br>
-            Local vibes.
+            Premium vape kits, e-liquids, glass,
+            accessories and smoking.
         </p>
 
-        <a class="button" href="#">SHOP NOW</a>
+        <div class="buttons">
+            <button class="btn btn-green">Shop Now</button>
+            <button class="btn btn-purple">View Collection</button>
+        </div>
 
     </div>
 
-    <img src="logo2" alt="Smart Clouds Storefront">
+    <div class="hero-card">
+        <div class="neon-box"></div>
+    </div>
 
 </section>
 
-<!-- CATEGORIES -->
+<div class="sale">
+    <h2>MEGA SALE • UP TO 50% OFF</h2>
+</div>
 
-<section class="categories">
+<section class="section">
 
-    <h2>SHOP BY CATEGORY</h2>
+    <h2 class="title">
+        Shop By <span>Category</span>
+    </h2>
 
     <div class="grid">
 
-        <div class="card">
-            <h3>PIPES & BONGS</h3>
+        <div class="category">
+            <h3>Vape Kits</h3>
         </div>
 
-        <div class="card">
-            <h3>VAPES</h3>
+        <div class="category">
+            <h3>E-Liquids</h3>
         </div>
 
-        <div class="card">
-            <h3>FLOWER</h3>
+        <div class="category">
+            <h3>Glass</h3>
         </div>
 
-        <div class="card">
-            <h3>WRAPS & ROLLING</h3>
+        <div class="category">
+            <h3>Pods</h3>
         </div>
 
-        <div class="card">
-            <h3>CONCENTRATES</h3>
+        <div class="category">
+            <h3>Accessories</h3>
         </div>
 
-        <div class="card">
-            <h3>EDIBLES</h3>
+        <div class="category">
+            <h3>Disposables</h3>
         </div>
 
     </div>
 
 </section>
 
-<!-- ABOUT -->
+<section class="section">
 
-<section class="about">
+    <h2 class="title">
+        Featured <span>Products</span>
+    </h2>
 
-    <div class="about-text">
+    <div class="products">
 
-        <h2 class="green">ABOUT US</h2>
+        <div class="product">
+            <div class="product-image"></div>
+            <div class="product-content">
+                <h3>Legend Vape Kit</h3>
+                <div class="price">$59.99</div>
+                <button class="buy">Add To Cart</button>
+            </div>
+        </div>
 
-        <br>
+        <div class="product">
+            <div class="product-image"></div>
+            <div class="product-content">
+                <h3>Premium E-Liquid</h3>
+                <div class="price">$19.99</div>
+                <button class="buy">Add To Cart</button>
+            </div>
+        </div>
 
-        <p>
-            Smart Clouds Smoke Shop is your local destination for premium smoke products,
-            vapes, glass, wraps, accessories, and more.
+        <div class="product">
+            <div class="product-image"></div>
+            <div class="product-content">
+                <h3>Glass Piece</h3>
+                <div class="price">$24.99</div>
+                <button class="buy">Add To Cart</button>
+            </div>
+        </div>
 
-            We're committed to quality products, great customer service,
-            and creating a welcoming environment for our community.
-        </p>
-
-        <a class="button" href="#">LEARN MORE</a>
+        <div class="product">
+            <div class="product-image"></div>
+            <div class="product-content">
+                <h3>Disposable Device</h3>
+                <div class="price">$14.99</div>
+                <button class="buy">Add To Cart</button>
+            </div>
+        </div>
 
     </div>
 
-    <img src="logo1" alt="Smart Clouds Storefront">
-
 </section>
 
-<!-- FOOTER -->
+<section class="newsletter">
+
+    <div class="newsletter-inner">
+
+        <h2 class="title">
+            Stay In The <span>Loop</span>
+        </h2>
+
+        <p>Get new deals and product drops.</p>
+
+        <input type="email" placeholder="Enter your email">
+
+    </div>
+
+</section>
 
 <footer>
-
-    <img src="logo2" alt="Smart Clouds Logo" class="footer-logo">
-
-    <h2 class="green">FOLLOW US</h2>
-
-    <p>@smartclouds615</p>
-
+    © 2025 Smart Clouds Smoke Shop
 </footer>
 
 </body>
