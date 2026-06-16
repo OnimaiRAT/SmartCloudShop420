@@ -54,45 +54,38 @@ body::before{
 /* smoke */
 
 .smoke{
-    position:fixed;
-    width:100%;
-    height:100%;
-    pointer-events:none;
-    overflow:hidden;
-    z-index:-1;
-}
-
-.smoke span{
     position:absolute;
-    bottom:-200px;
-    width:350px;
-    height:350px;
-    background:radial-gradient(circle,
-    rgba(176,0,255,.2),
-    transparent 70%);
-    filter:blur(80px);
-    animation:smoke 18s infinite linear;
+    width:300px;
+    height:300px;
+    background:radial-gradient(
+        circle,
+        rgba(255,255,255,.12) 0%,
+        rgba(255,255,255,.05) 35%,
+        transparent 75%
+    );
+    border-radius:50%;
+    filter:blur(40px);
+    pointer-events:none;
+    z-index:1;
+    animation:floatSmoke 12s linear infinite;
 }
 
-.smoke span:nth-child(2){
-    left:40%;
-    animation-duration:22s;
-}
+@keyframes floatSmoke{
 
-.smoke span:nth-child(3){
-    left:70%;
-    background:radial-gradient(circle,
-    rgba(180,255,0,.12),
-    transparent 70%);
-}
-
-@keyframes smoke{
-    from{
-        transform:translateY(0) scale(1);
+    0%{
+        transform:translateY(100px) translateX(0) scale(.8);
+        opacity:0;
     }
-    to{
-        transform:translateY(-120vh) scale(1.8);
+
+    20%{
+        opacity:.7;
     }
+
+    100%{
+        transform:translateY(-600px) translateX(120px) scale(2);
+        opacity:0;
+    }
+
 }
 
 /* header */
